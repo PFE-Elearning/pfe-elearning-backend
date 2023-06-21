@@ -2,9 +2,10 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,4 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('formation', FormationController::class);
-Route::resource('blog', BlogController::class);
+Route::resource('blogs', FormationController::class);
+Route::resource("users",UserController::class);
+Route::resource('payments', PaymentController::class);

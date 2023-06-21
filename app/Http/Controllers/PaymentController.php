@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -12,15 +13,8 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $payments = Payment::all();
+        return PaymentResource::collection($payments);
     }
 
     /**
@@ -28,7 +22,11 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Payment::create($request->all());
+        return response()->json([
+            'message' => 'Done',
+            'formations' => PaymentResource::collection(Payment::all())
+        ]);
     }
 
     /**
@@ -40,26 +38,23 @@ class PaymentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Payment $payment)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Payment $payment)
+    public function update(Request $request, $id)
     {
-        //
+        Payment::findOrFail($id)->update($request->all());
+        return response()->json([
+            'message' => 'Update',
+            'formations' => PaymentResource::collection(Payment::all())
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Payment $payment)
+    public function destroy($id)
     {
-        //
+        Payment::destroy($id);
+        return response()->json(['message' => 'Delete with success']);
     }
 }

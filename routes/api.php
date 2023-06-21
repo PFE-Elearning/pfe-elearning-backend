@@ -5,8 +5,8 @@ use App\Http\Controllers\FormationController;
 use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,6 +26,4 @@ Route::resource('formation', FormationController::class);
 Route::resource('blogs', FormationController::class);
 Route::resource("users",UserController::class);
 Route::resource('payments', PaymentController::class);
-
-Route::resource("users",UserController::class); 
-Route::resource("courses",CourseController::class); 
+Route::resource('courses', CourseController::class);

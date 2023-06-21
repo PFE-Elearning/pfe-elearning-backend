@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BlogResource;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 
@@ -12,15 +13,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $blogs = Blog::all();
+        return BlogResource::collection($blogs);
     }
 
     /**
@@ -28,7 +22,11 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Blog::create($request->all());
+        return response()->json([
+            'message' => 'Done' ,
+            'blogs' => BlogResource::collection(Blog::all())
+        ]);
     }
 
     /**
@@ -40,26 +38,23 @@ class BlogController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Blog $blog)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
-        //
+        Blog::findOrFail($id)->update($request->all());
+        return response()->json([
+            'message' => 'Update' ,
+            'blogs' => BlogResource::collection(Blog::all())
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog)
+    public function destroy($id)
     {
-        //
+        Blog::destroy($id);
+        return response()->json(['message' => 'Delete with success']);
     }
 }

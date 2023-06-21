@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FormationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('formation', FormationController::class);
+Route::resource('blog', BlogController::class);
 
 Route::resource("users",UserController::class); 
 Route::resource("courses",CourseController::class); 

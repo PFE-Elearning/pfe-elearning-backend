@@ -4,7 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use App\Http\Resources\FormationResource;
+// use App\Models\Formation;
 class UserResource extends JsonResource
 {
     /**
@@ -21,7 +22,7 @@ class UserResource extends JsonResource
             'email'=>$this->email,
             'phone'=>$this->phone,
             'role'=>$this->role,
-            'formations'=>FormationResource::collection($this->formations)
+            // 'formations'=>FormationResource::collection($this->formations)
 
         ];
     }

@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\User; 
+use App\Models\Course;
 class Formation extends Model
 {
     use HasFactory;
@@ -14,5 +15,8 @@ class Formation extends Model
     ];
     public function users(){
         return $this->hasMany(User::class);
+    }
+    public function courses(){
+        return $this->hasMany(Course::class);
     }
 }

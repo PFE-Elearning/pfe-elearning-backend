@@ -20,7 +20,7 @@ class CourseFactory extends Factory
             'title' => fake()->sentence(2),
             'description' => fake()->text(),
             'rating' => fake()->numberBetween(1,5),
-            'formation_id' => fake()->randomElement(Foramtion::all('id')),
+            'formation_id' => fake()->randomElement(Formation::all('id')),
         ];
     }
 }

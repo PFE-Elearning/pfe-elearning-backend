@@ -23,7 +23,13 @@ class UserFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'avatar' => "profile.png",
             'role' => fake()->randomElement(['student','formateur','admin']),
+            'first_name' => fake()->name(),
+            'last_name' => fake()->name(),
+            'phone' => fake()->phoneNumber(),
+            'avatar' => "profile.png",
+            'role' => fake()->randomElement(['student','formateur','admin']),
             'email' => fake()->unique()->safeEmail(),
+            'password' => '12345678', // password
             'password' => '12345678', // password
             'remember_token' => Str::random(10),
             'formation_id' => fake()->randomElement(Formation::all('id')),

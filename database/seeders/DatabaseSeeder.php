@@ -5,6 +5,11 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
+<<<<<<< HEAD
+=======
+use Database\Seeders\FormationSeeder;
+use Database\Seeders\CourseSeeder;
+>>>>>>> 8acd756732ab9152b9b75d0e76ad125782c406fd
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+<<<<<<< HEAD
             FormationSeeder::class,
             UserSeeder::class,
             PaymentSeeder::class,
@@ -25,5 +31,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+=======
+            FormationSeeder::class
+        ]);
+        $this->call([
+            UserSeeder::class,
+        ]);
+        $this->call([
+            CourseSeeder::class,
+        ]);
+>>>>>>> 8acd756732ab9152b9b75d0e76ad125782c406fd
     }
 }

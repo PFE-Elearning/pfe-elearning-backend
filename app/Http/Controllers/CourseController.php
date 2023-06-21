@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\CourseResource;
 class CourseController extends Controller
 {
     /**
@@ -13,14 +13,7 @@ class CourseController extends Controller
     public function index()
     {
         //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return CourseResource::collection(Course::all());
     }
 
     /**
@@ -29,37 +22,26 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         //
+        Course::create($request->all());
+        return response()->json(['message'=>'Done! ','courses'=>CourseResource::collection(Course::all())]);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Course $course)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Course $course)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, $id)
     {
         //
+        Course::find($id)->update($request->all());
+        return response()->json(['message'=>'Done! ','courses'=>CourseResource::collection(Course::all())]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
         //
+        Course::destroy($id);
+        return response()->json(['message'=>'Done! ','courses'=>CourseResource::collection(Course::all())]);
     }
 }

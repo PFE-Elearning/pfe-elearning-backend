@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-
+use App\Models\Formation;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'password' => '12345678', // password
             'remember_token' => Str::random(10),
-            'formation_id' => fake()->randomElement([1,2,3,4,5,6,7,8,9]),
+            'formation_id' => fake()->randomElement(Formation::all('id')),
         ];
     }
 

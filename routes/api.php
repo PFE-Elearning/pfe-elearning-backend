@@ -26,3 +26,4 @@ Route::resource('formation', FormationController::class);
 Route::resource('blogs', FormationController::class);
 Route::resource("users",UserController::class);
 Route::resource('payments', PaymentController::class);
+Route::resource('courses', CourseController::class);

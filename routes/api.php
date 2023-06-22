@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('formation', FormationController::class);
-Route::resource('blogs', FormationController::class);
+Route::resource('blogs', BlogController::class);
 Route::resource("users",UserController::class);
 Route::resource('payments', PaymentController::class);
 Route::resource('courses', CourseController::class);
